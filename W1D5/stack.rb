@@ -7,6 +7,7 @@ class Stack
 
   def add(el)
     @stack_array << el
+    el
   end
 
   def remove
@@ -17,3 +18,17 @@ class Stack
     @stack_array
   end
 end
+
+
+
+# s = Stack.new
+# p s.add(1)
+# p s.show
+# p s.add(2)
+# p s.show
+# p s.remove
+# p s.show
+# p s.add(3)
+# p s.show
+# p s.remove
+# p s.show

@@ -6,6 +6,7 @@ class Queue
 
   def enqueue(el)
     @queue_array << el
+    el
   end
 
   def dequeue
@@ -16,3 +17,17 @@ class Queue
     @queue_array
   end
 end
+
+
+
+# q = Queue.new
+# p q.enqueue(1)
+# p q.show
+# p q.enqueue(2)
+# p q.show
+# p q.dequeue
+# p q.show
+# p q.enqueue(3)
+# p q.show
+# p q.dequeue
+# p q.show
