@@ -9,7 +9,7 @@ class Mancala
   end
 
   def play
-    puts "Welcome to Mancala"
+    p "Welcome to Mancala"
     @board.render
     current_player = @player1
     until won?
@@ -17,7 +17,7 @@ class Mancala
       current_player = current_player == @player1 ? @player2 : @player1
     end
 
-    puts "The game is finished! #{winner_message}"
+    p "The game is finished! #{winner_message}"
   end
 
   def take_turn(current_player)
@@ -32,7 +32,7 @@ class Mancala
           start_pos -= 1 if start_pos <= 6
           @board.valid_move?(start_pos)
         rescue Exception => e
-          puts e.message
+          p e.message
         retry
         end
         move_result = @board.make_move(start_pos, current_player.name)
@@ -62,3 +62,7 @@ class Mancala
     puts " 1   2   3   4   5   6"
   end
 end
+
+
+m = Mancala.new("Royce", "Samuel")
+m.play
