@@ -1,50 +1,38 @@
 class LRUCache
 
   def initialize(size)
-    @cache = Array.new(size)
+    @size = size
+    @cache = []
   end
 
   def count
   # returns number of elements currently in cache
-    count = 0
-    @cache.each do |el|
-      count += 1 if el
-    end
-    count
+    @cache.count
   end
 
   def add(el)
   # adds element to cache according to LRU principle
     el_index = @cache.find_index(el)
     if el_index
-      shift(el, el_index)
+      @cache.delete_at(el_index)
+      @cache << el
     else
-      first_index = @cache.length - count - 1
       if full
-        first_index = 0
+        @cache.shift
       end
-      shift(el, first_index)
+      @cache << el
     end
   end
 
   def show
   # shows the items in the cache, with the LRU item first
-    p @cache.to_s
+    p @cache
   end
 
 private
 # helper methods go here!
-  def shift(new_first, index)
-    i = index
-    while i < @cache.length
-      @cache[i] = @cache[i+1]
-      i += 1
-    end
-    @cache[@cache.length - 1] = new_first
-  end
-
   def full
-    count == @cache.length
+    count == @size
   end
 end
 
