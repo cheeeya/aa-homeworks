@@ -1,14 +1,40 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import GiphysIndex from './giphys_index';
-import configureStore from '../store/store';
 
-import { receiveSearchGiphys, fetchSearchGiphys } from '../actions/giphy_actions.js';
+class GiphysSearch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: ""
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ searchTerm: event.target.value });
+  }
 
-document.addEventListener("DOMContentLoaded", function(){
-  const store = configureStore();
-  window.store = store;
-  window.fetchSearchGiphys = fetchSearchGiphys;
-  window.receiveSearchGiphys = receiveSearchGiphys;
-})
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.fetchSearchGiphys(this.state.searchTerm).then ( () => this.setState({ searchTerm: "" }));
+  }
+
+  render() {
+    const { searchTerm } = this.state;
+    return (
+      <div>
+        <GiphysIndex giphys={this.props.giphys}/>
+        <form>
+          <label>
+            <input onChange={this.handleChange} value={searchTerm}></input>
+          </label>
+          <button onClick={this.handleSubmit}>Search</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+export default GiphysSearch;
