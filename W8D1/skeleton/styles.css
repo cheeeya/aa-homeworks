@@ -1,0 +1,39 @@
+body {
+  position: relative;
+  width: 100%;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+.splash {
+  width: 100%;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+.intro {
+  position: absolute;
+  width: 500px;
+  text-align: center;
+  top: 400px;
+  left: 400px;
+  text-shadow: 0.5px 0.5px;
+  font-family: monospace;
+}
+
+.user {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+footer {
+  margin: 0 auto;
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
